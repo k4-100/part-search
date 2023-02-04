@@ -1,15 +1,22 @@
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material'
 import { Box } from '@mui/system'
-import { useState } from 'react'
-import PlaceHolder from './components/PlaceHolder'
 
 
-function App() {
-  const [count, setCount] = useState(0)
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark"
+  }
+})
 
+
+const App = () => {
   return (
-    <Box>
-      <PlaceHolder />
-    </Box>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <Box>
+        sad
+      </Box>
+    </ThemeProvider>
   )
 }
 
