@@ -19,7 +19,11 @@ const App = () => {
               <Typography 
                 variant="h5" 
                 component="div" 
-                sx={{ flexGrow: 1, textAlign: "center" }}
+                sx={{ 
+                  flexGrow: 1, 
+                  textAlign: "center",  
+                  paddingLeft: "10px"
+                }}
               >
                 part-search
               </Typography>
