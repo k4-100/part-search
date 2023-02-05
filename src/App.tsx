@@ -148,10 +148,12 @@ const App = () => {
                 variant="outlined"
                 sx={{
                   height: "100%",
-                  p: "35px"
+                  p: "30px"
                 }}
               >
-                <Search />
+                <Search sx={{
+                  fontSize: "40px"
+                }} />
               </Button>
             </Box>
               <Box 
@@ -172,7 +174,6 @@ const App = () => {
                   use webscrapper
                 </Button>
                 
-                {/* <Divider orientation="vertical" flexItem /> */}
 
                 <Button
                   onClick={()=> handleOptionClick(1) }
@@ -181,7 +182,6 @@ const App = () => {
                   display closed transactions
                 </Button>
 
-                {/* <Divider orientation="vertical" flexItem /> */}
                 <Button
                   onClick={()=> handleOptionClick(2) }
                   color={ options[2] ? "success" :  "error"  }
