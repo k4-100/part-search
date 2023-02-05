@@ -1,5 +1,5 @@
-import { Box, CssBaseline, ThemeProvider, createTheme, AppBar, Toolbar, IconButton, Typography, Button } from '@mui/material'
-import { Menu, Adb, GitHub, LinkedIn } from '@mui/icons-material'
+import { Box, CssBaseline, ThemeProvider, createTheme, AppBar, Toolbar, IconButton, Typography, Button, TextField } from '@mui/material'
+import { Menu, Adb, GitHub, LinkedIn, Search } from '@mui/icons-material'
 import mainWebsiteFont from './assets/fonts/agave_regular_Nerd_Font_Complete_Mono.ttf'
 
 
@@ -27,6 +27,18 @@ typography: {
 })
 
 // family: agave Nerd Font Mono
+
+
+
+const height: number = 90
+
+// magic number which must be set appropriately for height
+const labelOffset: number = -2
+
+// get this from your form library, for instance in
+// react-final-form it's fieldProps.meta.active
+// or provide it yourself - see notes below
+const focused: boolean = false
 
 
 const App = () => {
@@ -60,6 +72,74 @@ const App = () => {
             </Toolbar>
           </AppBar>
         </Box>
+          {/* content below nav */}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent:"center",
+            alignItems: "center",
+            minHeight:"90vh"
+          }}
+        > 
+          <Box 
+            sx={{
+              width:"300px",
+              display: "flex",
+              justifyContent:"center",
+              alignItems: "center",
+              flexWrap: "wrap"
+            }}
+          > 
+            <Box 
+              sx={{
+                display: "flex",
+                justifyContent:"center",
+                alignItems: "flex-start",
+                height: `${height}px`
+              }}
+            >
+                <TextField
+                  label="Search"
+                  variant="outlined"
+
+                  /* styles the wrapper */
+                  style={{ height }}
+
+                  /* styles the label component */
+                  InputLabelProps={{
+                    style: {
+                      height,
+                      fontSize: "45px",
+                      ...(!focused && { top: `${labelOffset}px` }),
+                    },
+                  }}
+
+                  /* styles the input component */
+                  inputProps={{
+                      style: {
+                        height,
+                        fontSize: "35px",
+                        width:"clamp(260px, 60vw, 700px)",
+                        padding: '0 14px',
+                      },
+                  }}
+                />
+
+
+              <Button 
+                variant="outlined"
+                sx={{
+                  height: "100%",
+                  p: "35px"
+                }}
+              >
+                <Search />
+              </Button>
+            </Box>
+            <h1> OPTIONS </h1>
+          </Box>
+        </Box>
+
       </Box>
     </ThemeProvider>
   )
