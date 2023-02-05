@@ -1,6 +1,7 @@
-import { Box, CssBaseline, ThemeProvider, createTheme, AppBar, Toolbar, IconButton, Typography, Button, TextField } from '@mui/material'
+import { Box, CssBaseline, ThemeProvider, createTheme, AppBar, Toolbar, IconButton, Typography, Button, TextField, Divider } from '@mui/material'
 import { Menu, Adb, GitHub, LinkedIn, Search } from '@mui/icons-material'
 import mainWebsiteFont from './assets/fonts/agave_regular_Nerd_Font_Complete_Mono.ttf'
+import { useState } from 'react'
 
 
 const darkTheme = createTheme({
@@ -42,6 +43,21 @@ const focused: boolean = false
 
 
 const App = () => {
+  const [options, setOptions] = useState<Array<boolean>>(
+    [ 
+      false, 
+      false, 
+      false
+    ]
+  )
+
+  const handleOptionClick = (index: number) =>{
+    const newOptions = [...options]
+    newOptions[index] = !newOptions[index]
+    setOptions(newOptions)
+  }
+
+
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
@@ -141,16 +157,35 @@ const App = () => {
               <Box 
                 sx={{
                 display: "flex",
-                mt: 1
+                mt: 1.5,
+                "& > *": {
+                  mt: 0.5,
+                  mx: 1,
+                  fontSize: "17px"
+                }
                 }}
               >
-                <Button> 
+                <Button 
+                  onClick={()=> handleOptionClick(0) }
+                  color={ options[0] ? "success" :  "error"  }
+                > 
                   use webscrapper
                 </Button>
-                <Button> 
+                
+                {/* <Divider orientation="vertical" flexItem /> */}
+
+                <Button
+                  onClick={()=> handleOptionClick(1) }
+                  color={ options[1] ? "success" :  "error"  }
+                > 
                   display closed transactions
                 </Button>
-                <Button> 
+
+                {/* <Divider orientation="vertical" flexItem /> */}
+                <Button
+                  onClick={()=> handleOptionClick(2) }
+                  color={ options[2] ? "success" :  "error"  }
+                > 
                   Show 100{"<x"} records
                 </Button>
               </Box>
