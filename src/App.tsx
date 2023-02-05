@@ -81,15 +81,17 @@ const App = () => {
             minHeight:"90vh"
           }}
         > 
+          {/* search bar and options  */}
           <Box 
             sx={{
-              width:"300px",
+              width:"100%",
               display: "flex",
+              flexDirection: "column",
               justifyContent:"center",
               alignItems: "center",
-              flexWrap: "wrap"
             }}
           > 
+            {/* search bar */}
             <Box 
               sx={{
                 display: "flex",
@@ -136,7 +138,22 @@ const App = () => {
                 <Search />
               </Button>
             </Box>
-            <h1> OPTIONS </h1>
+              <Box 
+                sx={{
+                display: "flex",
+                mt: 1
+                }}
+              >
+                <Button> 
+                  use webscrapper
+                </Button>
+                <Button> 
+                  display closed transactions
+                </Button>
+                <Button> 
+                  Show 100{"<x"} records
+                </Button>
+              </Box>
           </Box>
         </Box>
 
