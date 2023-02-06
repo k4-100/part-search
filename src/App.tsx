@@ -1,7 +1,7 @@
 import { Box, CssBaseline, ThemeProvider, createTheme, AppBar, Toolbar, IconButton, Typography, Button, TextField, Divider } from '@mui/material'
 import { Menu, Adb, GitHub, LinkedIn, Search } from '@mui/icons-material'
 import mainWebsiteFont from './assets/fonts/agave_regular_Nerd_Font_Complete_Mono.ttf'
-import { useState } from 'react'
+import  React, { useRef, useState, useEffect} from 'react'
 
 
 const darkTheme = createTheme({
@@ -50,11 +50,30 @@ const App = () => {
       false
     ]
   )
+  
+  const [isSearchBarFocused, setIsSearchBarFocused] = useState<boolean>(false)
 
+  // const textFieldRef: React.MutableRefObject<number | null> = useRef(null)
+    
+
+  
   const handleOptionClick = (index: number) =>{
     const newOptions = [...options]
     newOptions[index] = !newOptions[index]
     setOptions(newOptions)
+  }
+
+
+
+
+  const handleSearchBarFocus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element> ) =>{
+    console.log( "searchbar focus: ", e.target )
+    setIsSearchBarFocused( true )
+  }
+
+  const handleSearchBarBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element> ) =>{
+    console.log( "searcbar blur: ", e.target )
+    setIsSearchBarFocused( false )
   }
 
 
@@ -88,110 +107,117 @@ const App = () => {
             </Toolbar>
           </AppBar>
         </Box>
-          {/* content below nav */}
+        {/* content below nav */}
         <Box
           sx={{
-            display: "flex",
-            justifyContent:"center",
-            alignItems: "center",
             minHeight:"90vh"
           }}
         > 
-          {/* search bar and options  */}
+        {/*  wrapper around search bar and options Box */}
           <Box 
+            id="randoams"
             sx={{
-              width:"100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent:"center",
-              alignItems: "center",
-            }}
-          > 
-            {/* search bar */}
+            position: "relative",
+            transition: "height 800ms",
+            height: isSearchBarFocused ? "22vh" : "52vh",
+          }}>
+            {/*  search bar and options  */}
             <Box 
               sx={{
+                position: "absolute",
+                width:"100%",
+                my: 3,
+                bottom: 0,
                 display: "flex",
+                flexDirection: "column",
                 justifyContent:"center",
-                alignItems: "flex-start",
-                height: `${height}px`
+                alignItems: "center",
               }}
-            >
-                <TextField
-                  label="Search"
-                  variant="outlined"
-
-                  /* styles the wrapper */
-                  style={{ height }}
-
-                  /* styles the label component */
-                  InputLabelProps={{
-                    style: {
-                      height,
-                      fontSize: "45px",
-                      ...(!focused && { top: `${labelOffset}px` }),
-                    },
-                  }}
-
-                  /* styles the input component */
-                  inputProps={{
-                      style: {
-                        height,
-                        fontSize: "35px",
-                        width:"clamp(260px, 60vw, 700px)",
-                        padding: '0 14px',
-                      },
-                  }}
-                />
-
-
-              <Button 
-                variant="outlined"
-                sx={{
-                  height: "100%",
-                  p: "30px"
-                }}
-              >
-                <Search sx={{
-                  fontSize: "40px"
-                }} />
-              </Button>
-            </Box>
+            > 
+              {/* search bar */}
               <Box 
                 sx={{
-                display: "flex",
-                mt: 1.5,
-                "& > *": {
-                  mt: 0.5,
-                  mx: 1,
-                  fontSize: "17px"
-                }
+                  display: "flex",
+                  justifyContent:"center",
+                  alignItems: "flex-start",
+                  height: `${height}px`
                 }}
               >
+                  <TextField
+                    label="Search"
+                    variant="outlined"
+                    onFocus={ (e) => handleSearchBarFocus(e) }
+                    onBlur={ (e) => handleSearchBarBlur(e) }
+                    /* styles the wrapper */
+                    style={{ height }}
+
+                    /* styles the label component */
+                    InputLabelProps={{
+                      style: {
+                        height,
+                        fontSize: "45px",
+                        ...(!focused && { top: `${labelOffset}px` }),
+                      },
+                    }}
+
+                    /* styles the input component */
+                    inputProps={{
+                        style: {
+                          height,
+                          fontSize: "35px",
+                          width:"clamp(260px, 55vw, 700px)",
+                          padding: '0 14px',
+                        },
+                    }}
+                  />
                 <Button 
-                  onClick={()=> handleOptionClick(0) }
-                  color={ options[0] ? "success" :  "error"  }
-                > 
-                  use webscrapper
-                </Button>
-                
-
-                <Button
-                  onClick={()=> handleOptionClick(1) }
-                  color={ options[1] ? "success" :  "error"  }
-                > 
-                  display closed transactions
-                </Button>
-
-                <Button
-                  onClick={()=> handleOptionClick(2) }
-                  color={ options[2] ? "success" :  "error"  }
-                > 
-                  Show 100{"<x"} records
+                  variant="outlined"
+                  sx={{
+                    height: "100%",
+                    p: "30px"
+                  }}
+                >
+                  <Search sx={{
+                    fontSize: "40px"
+                  }} />
                 </Button>
               </Box>
+                <Box 
+                  sx={{
+                  display: "flex",
+                  mt: 1.5,
+                  "& > *": {
+                    mt: 0.5,
+                    mx: 1,
+                    fontSize: "17px"
+                  }
+                  }}
+                >
+                  <Button 
+                    onClick={()=> handleOptionClick(0) }
+                    color={ options[0] ? "success" :  "error" }
+                  > 
+                    use webscrapper
+                  </Button>
+                  
+
+                  <Button
+                    onClick={()=> handleOptionClick(1) }
+                    color={ options[1] ? "success" :  "error" }
+                  > 
+                    display closed transactions
+                  </Button>
+
+                  <Button
+                    onClick={()=> handleOptionClick(2) }
+                    color={ options[2] ? "success" :  "error" }
+                  > 
+                    Show 100{"<x"} records
+                  </Button>
+                </Box>
+            </Box>
           </Box>
         </Box>
-
       </Box>
     </ThemeProvider>
   )
