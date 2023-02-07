@@ -92,7 +92,8 @@ const App = () => {
             sx={{
             position: "relative",
             transition: "height 800ms",
-            height: isSearchBarFocused ? "20vh" : "52vh",
+            height: true ? "20vh" : "52vh",
+            // height: isSearchBarFocused ? "20vh" : "52vh",
           }}>
             <SearchBar 
               handleSearchBarFocus={handleSearchBarFocus}  
