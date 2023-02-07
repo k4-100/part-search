@@ -44,7 +44,7 @@ const SearchBar = ({ handleSearchBarFocus, handleSearchBarBlur }) =>{
   return(
     <Box 
       sx={{
-        position: "absolute",
+        // position: "absolute",
         width:"100%",
         my: 3,
         bottom: 0,

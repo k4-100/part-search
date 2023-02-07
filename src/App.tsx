@@ -3,6 +3,7 @@ import { Menu, Adb, GitHub, LinkedIn, Search } from '@mui/icons-material'
 import mainWebsiteFont from './assets/fonts/agave_regular_Nerd_Font_Complete_Mono.ttf'
 import  React, { useRef, useState, useEffect} from 'react'
 import SearchBar from './components/SearchBar'
+import SearchResults from './components/SearchResults'
 
 
 const darkTheme = createTheme({
@@ -92,13 +93,14 @@ const App = () => {
             sx={{
             position: "relative",
             transition: "height 800ms",
-            height: true ? "20vh" : "52vh",
-            // height: isSearchBarFocused ? "20vh" : "52vh",
+            // height: true ? "20vh" : "52vh",
+            height: isSearchBarFocused ? "20vh" : "52vh",
           }}>
             <SearchBar 
               handleSearchBarFocus={handleSearchBarFocus}  
               handleSearchBarBlur={handleSearchBarBlur}
             />
+            <SearchResults />
           </Box>
         </Box>
       </Box>
