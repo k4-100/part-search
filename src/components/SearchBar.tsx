@@ -57,10 +57,12 @@ const SearchBar = ({ handleSearchBarFocus, handleSearchBarBlur }) =>{
       {/* search bar */}
       <Box 
         sx={{
+          width:"clamp(270px, 55vw, 900px)",
           display: "flex",
-          justifyContent:"center",
+          justifyContent:"space-between",
           alignItems: "flex-start",
-          height: `${height}px`
+          height: `${height}px`,
+          // background: "red",
         }}
       >
           <TextField
@@ -85,7 +87,7 @@ const SearchBar = ({ handleSearchBarFocus, handleSearchBarBlur }) =>{
                 style: {
                   height,
                   fontSize: "35px",
-                  width:"clamp(260px, 55vw, 700px)",
+                  width: "50vw",
                   padding: '0 14px',
                 },
             }}
