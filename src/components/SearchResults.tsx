@@ -1,5 +1,5 @@
-import { Box, Paper, Link, Typography, Button} from '@mui/material'
-import { InfoOutlined } from '@mui/icons-material'
+import { Box, Paper, Link, Typography, Button, IconButton} from '@mui/material'
+import { InfoOutlined, Add } from '@mui/icons-material'
 import { grey , blue} from "@mui/material/colors";
 import React from 'react'
 
@@ -30,6 +30,7 @@ const SearchResults = () =>{
           justifyContent: "space-between",
           pr: 1
         }}>
+          
           <Typography variant="h6" gutterBottom sx={{
             fontSize: "2vw"
           }}>
@@ -38,15 +39,28 @@ const SearchResults = () =>{
             </Link>
           </Typography>
           <Typography variant="h4" sx={{
-            fontSize: "clamp(15px, 3vw, 40px)"
+            fontSize: "clamp(15px, 3vw, 40px)",
+            pl: 3
           }}>
             $100.99
           </Typography>
+          <IconButton
+            color="success"
+            sx={{
+              position: "absolute",
+              bottom: 4,
+              left: 0,
+            }}
+          >
+
+            {/* <Add /> */}
+            +
+          </IconButton>
         </Box>
         <Box sx={{
           position: "relative",
           marginLeft: "auto",
-          maxWidth: "50%",
+          maxWidth: "45%",
         }}>
           <Button sx={{
             position: "absolute",
@@ -70,7 +84,7 @@ const SearchResults = () =>{
           </Button>
           <img src={placeholderImg} alt="product image" style={{
             display: "block",
-            maxWidth: "100%",
+            maxWidth: "100%"
           }} />
         </Box>
       </Box>
