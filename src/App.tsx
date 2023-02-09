@@ -4,6 +4,7 @@ import mainWebsiteFont from './assets/fonts/agave_regular_Nerd_Font_Complete_Mon
 import  React, { useRef, useState, useEffect} from 'react'
 import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults'
+import RecordDrawer from './RecordDrawer'
 
 
 const darkTheme = createTheme({
@@ -55,6 +56,7 @@ const App = () => {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Box>
+        <RecordDrawer />
         <Box sx={{ flexGrow: 1 }} >
           <AppBar position="static">
             <Toolbar>
