@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -13,13 +13,30 @@ import MailIcon from '@mui/icons-material/Mail';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
-export default function RecordDrawer() {
+
+const drawerWidth = 130
+
+const RecordDrawer = () => {
   const [state, setState] = React.useState({
     top: false,
     left: false,
     bottom: false,
     right: false,
   });
+    
+
+
+  const drawerRef = useRef(null);
+
+
+  useEffect(()=>{
+    if (drawerRef.current !== null){
+      console.log(drawerRef)
+    }
+  });
+
+
+
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -32,58 +49,52 @@ export default function RecordDrawer() {
         return;
       }
 
+      
+
       setState({ ...state, [anchor]: open });
     };
 
-  const list = (anchor: Anchor) => (
-    <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
 
   return (
-    <div>
-      {(['left', 'right', 'top', 'bottom'] as const).map((anchor) => (
+    <Box>
+      {(['left'] as const).map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
+            <Button 
+              variant="contained"
+              color="success"
+              onClick={toggleDrawer(anchor, true)}
+              sx={{
+                position: "absolute",
+                zIndex: 1300,
+                left: true ? `${drawerWidth}px` : 0
+              }}
+            >
+              {anchor}
+            </Button>
+            <Drawer
+            ref={drawerRef}
+            // open={state[anchor]}
+            open
             onClose={toggleDrawer(anchor, false)}
+            sx={{
+              // mt: "90px",
+              // mt: "50px"
+              // width: `${150}px` 
+            }}
           >
-            {list(anchor)}
+            {/* {list(anchor)} */}
+            <Box sx={{
+              height:"100px",
+              width: `${drawerWidth}px`,
+              backgroundColor: "red",
+            }}>
+              dsads
+            </Box>
           </Drawer>
         </React.Fragment>
       ))}
-    </div>
+    </Box>
   );
 }
+
+export default RecordDrawer

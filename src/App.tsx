@@ -56,7 +56,6 @@ const App = () => {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Box>
-        <RecordDrawer />
         <Box sx={{ flexGrow: 1 }} >
           <AppBar position="static">
             <Toolbar>
@@ -86,9 +85,12 @@ const App = () => {
         {/* content below nav */}
         <Box
           sx={{
-            minHeight:"90vh"
+            minHeight:"90vh",
+            position: "relative"
           }}
         > 
+
+        <RecordDrawer />
         {/*  wrapper around search bar and options Box */}
           <Box 
             id="randoams"
