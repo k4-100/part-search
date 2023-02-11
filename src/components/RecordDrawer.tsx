@@ -13,11 +13,12 @@ import MailIcon from '@mui/icons-material/Mail';
 import { Paper, Typography } from '@mui/material';
 import {grey} from '@mui/material/colors';
 import { MoreVert, Close} from '@mui/icons-material';
+import SearchResult from './SearchResult';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 
-const drawerWidth = 300
+const drawerWidth = 550
 
 const RecordDrawer = () => {
   const [state, setState] = React.useState({
@@ -88,7 +89,6 @@ const RecordDrawer = () => {
                   />
                 </>
                 : <>
-                  
                   <MoreVert 
                     sx={{
                       fontSize: "40px"
@@ -125,6 +125,11 @@ const RecordDrawer = () => {
                 </Typography>
               </Paper>
               <Box>
+                { 
+                  Array(2).fill(null).map(
+                      (_, i) => <SearchResult key={i} />
+                  )
+                }
               </Box>
             </Box>
           </Drawer>

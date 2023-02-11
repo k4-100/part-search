@@ -4,7 +4,7 @@ import mainWebsiteFont from './assets/fonts/agave_regular_Nerd_Font_Complete_Mon
 import  React, { useRef, useState, useEffect} from 'react'
 import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults'
-import RecordDrawer from './RecordDrawer'
+import RecordDrawer from './components/RecordDrawer'
 
 
 const darkTheme = createTheme({
