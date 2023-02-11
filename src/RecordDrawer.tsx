@@ -74,8 +74,8 @@ const RecordDrawer = () => {
                 top: "15px",
                 ml: drawerToggled ? `${drawerWidth}px` : 0,
                 p: 0,
-                transitionProperty: "margin",
-                transitionDuration: "220ms"
+                transitionProperty: "margin, background-color",
+                transitionDuration: "220ms, 700ms"
               }}
             >
               {
