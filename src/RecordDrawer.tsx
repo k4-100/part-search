@@ -12,7 +12,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Paper, Typography } from '@mui/material';
 import {grey} from '@mui/material/colors';
-import { MoreVert } from '@mui/icons-material';
+import { MoreVert, Close} from '@mui/icons-material';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
@@ -26,7 +26,8 @@ const RecordDrawer = () => {
     bottom: false,
     right: false,
   });
-    
+  
+  const [drawerToggled, setDrawerToggled] = useState(false)
 
 
   const drawerRef = useRef(null);
@@ -53,7 +54,7 @@ const RecordDrawer = () => {
       }
 
       
-
+      setDrawerToggled( !drawerToggled );
       setState({ ...state, [anchor]: open });
     };
 
@@ -64,27 +65,43 @@ const RecordDrawer = () => {
         <React.Fragment key={anchor}>
             <Button 
               variant="contained"
-              color="success"
+              color={ drawerToggled ? "error" : "success"}
               onClick={toggleDrawer(anchor, true)}
               sx={{
                 position: "absolute",
                 zIndex: 1300,
                 height: "50px",
                 top: "15px",
-                ml: true ? `${drawerWidth}px` : 0,
+                ml: drawerToggled ? `${drawerWidth}px` : 0,
                 p: 0,
+                transitionProperty: "margin",
+                transitionDuration: "220ms"
               }}
             >
-              <MoreVert 
-                sx={{
-                  fontSize: "40px"
-                }}
-              />
+              {
+                drawerToggled 
+                ? <>
+                  <Close 
+                    sx={{
+                      fontSize: "40px"
+                    }}
+                  />
+                </>
+                : <>
+                  
+                  <MoreVert 
+                    sx={{
+                      fontSize: "40px"
+                    }}
+                  />
+                </>
+              }
+
             </Button>
             <Drawer
-            ref={drawerRef}
-            // open={state[anchor]}
-            open
+            // ref={drawerRef}
+            open={drawerToggled}
+            // open
             onClose={toggleDrawer(anchor, false)}
             id="21321"
           >
