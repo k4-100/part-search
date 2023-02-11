@@ -12,7 +12,7 @@ const SearchResults = () =>{
     <Box>
       { 
         Array(4).fill(null).map(
-            (_) => <SearchResult />
+            (_,i) => <SearchResult key={i}/>
         )
       }
     </Box>

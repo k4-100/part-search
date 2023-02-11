@@ -5,6 +5,7 @@ import  React, { useRef, useState, useEffect} from 'react'
 import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults'
 import RecordDrawer from './components/RecordDrawer'
+import AdviceDrawer from './components/AdviceDrawer'
 
 
 const darkTheme = createTheme({
@@ -91,6 +92,7 @@ const App = () => {
         > 
 
         <RecordDrawer />
+        <AdviceDrawer />
         {/*  wrapper around search bar and options Box */}
           <Box 
             id="randoams"
