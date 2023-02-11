@@ -12,6 +12,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Paper, Typography } from '@mui/material';
 import {grey} from '@mui/material/colors';
+import { MoreVert } from '@mui/icons-material';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
@@ -68,10 +69,17 @@ const RecordDrawer = () => {
               sx={{
                 position: "absolute",
                 zIndex: 1300,
-                left: true ? `${drawerWidth}px` : 0
+                height: "50px",
+                top: "15px",
+                ml: true ? `${drawerWidth}px` : 0,
+                p: 0,
               }}
             >
-              {anchor}
+              <MoreVert 
+                sx={{
+                  fontSize: "40px"
+                }}
+              />
             </Button>
             <Drawer
             ref={drawerRef}
