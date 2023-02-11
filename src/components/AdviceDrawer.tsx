@@ -15,6 +15,24 @@ import {grey} from '@mui/material/colors';
 import { MoreVert, Close, Info} from '@mui/icons-material';
 import SearchResult from './SearchResult';
 
+
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import "./styles.css";
+
+// import required modules
+import { Pagination, Navigation } from "swiper";
+
+
+
+
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 
@@ -101,9 +119,9 @@ const AdviceDrawer = () => {
             </Button>
             <Drawer
             // ref={drawerRef}
-            open={drawerToggled}
+            // open={drawerToggled}
             anchor="right"
-            // open
+            open
             onClose={toggleDrawer(anchor, false)}
             id="21321"
           >
@@ -112,16 +130,50 @@ const AdviceDrawer = () => {
               background: grey[50]
             }}>
               <Box
-                elevation={20}
-                square
                 sx={{
-                // mt: 10,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height:"100%",
-                width: `${drawerWidth}px`,
-              }}>
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100%",
+                  width: `${drawerWidth}px`,
+                  "& .swiper-button-prev":{
+                    top: "5vh",
+                    left: "50%",
+                    transform: "translateX(-50%) rotateZ(90deg)",
+                  },
+                  "& .swiper-button-next":{
+                    top: "95vh",
+                    left: "50%",
+                    transform: "translateX(-50%) rotateZ(90deg)",
+                  },
+                  "& .swiper-pagination-fraction":{
+                    mb: 10,
+
+                  }
+                }}
+              >
+                <>
+                  <Swiper
+                    direction={"vertical"}
+                    pagination={{
+                      clickable: true,
+                      type: "fraction"
+                    }}
+                    navigation={true}
+                    modules={[Pagination, Navigation]}
+                    className="mySwiper"
+                  >
+                    <SwiperSlide>Slide 1</SwiperSlide>
+                    <SwiperSlide>Slide 2</SwiperSlide>
+                    <SwiperSlide>Slide 3</SwiperSlide>
+                    {/* <SwiperSlide>Slide 4</SwiperSlide> */}
+                    {/* <SwiperSlide>Slide 5</SwiperSlide> */}
+                    {/* <SwiperSlide>Slide 6</SwiperSlide> */}
+                    {/* <SwiperSlide>Slide 7</SwiperSlide> */}
+                    {/* <SwiperSlide>Slide 8</SwiperSlide> */}
+                    {/* <SwiperSlide>Slide 9</SwiperSlide> */}
+                  </Swiper>
+                </>
               </Box>
             </Box>
           </Drawer>
@@ -132,3 +184,16 @@ const AdviceDrawer = () => {
 }
 
 export default AdviceDrawer
+
+
+
+
+
+
+
+
+
+
+
+
+
