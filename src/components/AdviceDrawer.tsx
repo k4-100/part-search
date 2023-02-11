@@ -119,9 +119,9 @@ const AdviceDrawer = () => {
             </Button>
             <Drawer
             // ref={drawerRef}
-            // open={drawerToggled}
+            open={drawerToggled}
             anchor="right"
-            open
+            // open
             onClose={toggleDrawer(anchor, false)}
             id="21321"
           >
