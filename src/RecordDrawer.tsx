@@ -10,11 +10,13 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { Paper, Typography } from '@mui/material';
+import {grey} from '@mui/material/colors';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 
-const drawerWidth = 130
+const drawerWidth = 300
 
 const RecordDrawer = () => {
   const [state, setState] = React.useState({
@@ -76,19 +78,29 @@ const RecordDrawer = () => {
             // open={state[anchor]}
             open
             onClose={toggleDrawer(anchor, false)}
-            sx={{
-              // mt: "90px",
-              // mt: "50px"
-              // width: `${150}px` 
-            }}
+            id="21321"
           >
-            {/* {list(anchor)} */}
             <Box sx={{
-              height:"100px",
-              width: `${drawerWidth}px`,
-              backgroundColor: "red",
+              height: 1,
+              background: grey[50]
             }}>
-              dsads
+              <Paper
+                elevation={20}
+                square
+                sx={{
+                // mt: 10,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height:"100px",
+                width: `${drawerWidth}px`,
+              }}>
+                <Typography variant="h2" textAlign="center">
+                  List:
+                </Typography>
+              </Paper>
+              <Box>
+              </Box>
             </Box>
           </Drawer>
         </React.Fragment>
