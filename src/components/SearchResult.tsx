@@ -2,7 +2,7 @@ import { Box, Link, Typography, Button, IconButton} from '@mui/material'
 import { InfoOutlined, Add } from '@mui/icons-material'
 import { grey , blue} from "@mui/material/colors";
 
-import placeholderImg from '../assets/images/placeholders/1-karty-graficzne-box.webp'
+import placeholderImg from '../assets/images/placeholders/graphics-card-placeholder.webp'
 
 
 
