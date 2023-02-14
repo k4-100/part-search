@@ -7,6 +7,9 @@ import SearchResults from './components/SearchResults'
 import RecordDrawer from './components/RecordDrawer'
 import AdviceDrawer from './components/AdviceDrawer'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { actions } from './store'
+
 
 const darkTheme = createTheme({
   palette: {
@@ -38,7 +41,11 @@ typography: {
 
 
 const App = () => {
+  const searchResults = useSelector( (state: any) =>  state )
+  const dispatch = useDispatch()
   
+  console.log( searchResults )
+
   const [isSearchBarFocused, setIsSearchBarFocused] = useState<boolean>(false)
 
 
