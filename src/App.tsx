@@ -1,7 +1,7 @@
 import { Box, CssBaseline, ThemeProvider, createTheme, AppBar, Toolbar, IconButton, Typography, Button, TextField, Divider } from '@mui/material'
 import { Adb, GitHub, LinkedIn } from '@mui/icons-material'
 import mainWebsiteFont from './assets/fonts/agave_regular_Nerd_Font_Complete_Mono.ttf'
-import  React, {useState} from 'react'
+import React, { useState } from 'react'
 import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults'
 import RecordDrawer from './components/RecordDrawer'
@@ -15,7 +15,7 @@ const darkTheme = createTheme({
   palette: {
     mode: "dark"
   },
-typography: {
+  typography: {
     fontFamily: 'agave',
   },
   components: {
@@ -41,44 +41,46 @@ typography: {
 
 
 const App = () => {
-  const searchResults = useSelector( (state: any) =>  state )
+  const searchResults = useSelector((state: any) => state)
   const dispatch = useDispatch()
-  
-  console.log( searchResults )
+
+  console.log(searchResults)
 
   const [isSearchBarFocused, setIsSearchBarFocused] = useState<boolean>(false)
 
 
-  const handleSearchBarFocus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element> ) =>{
-    console.log( "searchbar focus: ", e.target )
-    setIsSearchBarFocused( true )
+  const handleSearchBarFocus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>) => {
+    console.log("searchbar focus: ", e.target)
+    setIsSearchBarFocused(true)
   }
 
-  const handleSearchBarBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element> ) =>{
-    console.log( "searcbar blur: ", e.target )
-    setIsSearchBarFocused( false )
+  const handleSearchBarBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>) => {
+    console.log("searcbar blur: ", e.target)
+    setIsSearchBarFocused(false)
   }
 
 
   return (
     <ThemeProvider theme={darkTheme}>
+      
       <CssBaseline />
       <Box>
         <Box sx={{ flexGrow: 1 }} >
           <AppBar position="static">
             <Toolbar>
               <Adb />
-              <Typography 
-                variant="h5" 
-                component="div" 
-                sx={{ 
-                  flexGrow: 1, 
-                  textAlign: "center",  
+              <Typography
+                variant="h5"
+                component="div"
+                sx={{
+                  flexGrow: 1,
+                  textAlign: "center",
                   paddingLeft: "10px"
                 }}
               >
                 part-search
               </Typography>
+          
               <Box>
                 <IconButton>
                   <GitHub />
@@ -93,24 +95,23 @@ const App = () => {
         {/* content below nav */}
         <Box
           sx={{
-            minHeight:"90vh",
+            minHeight: "90vh",
             position: "relative"
           }}
-        > 
-
-        <RecordDrawer />
-        <AdviceDrawer />
-        {/*  wrapper around search bar and options Box */}
-          <Box 
+        >
+          <RecordDrawer />
+          <AdviceDrawer />
+          {/*  wrapper around search bar and options Box */}
+          <Box
             id="randoams"
             sx={{
-            position: "relative",
-            transition: "height 800ms",
-            // height: true ? "20vh" : "52vh",
-            height: isSearchBarFocused ? "20vh" : "52vh",
-          }}>
-            <SearchBar 
-              handleSearchBarFocus={handleSearchBarFocus}  
+              position: "relative",
+              transition: "height 800ms",
+              // height: true ? "20vh" : "52vh",
+              height: isSearchBarFocused ? "20vh" : "52vh",
+            }}>
+            <SearchBar
+              handleSearchBarFocus={handleSearchBarFocus}
               handleSearchBarBlur={handleSearchBarBlur}
             />
             <SearchResults />
