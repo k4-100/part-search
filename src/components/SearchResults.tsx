@@ -17,11 +17,11 @@ const SearchResults = () =>{
     <Box>
       { 
         searchResults.records && searchResults.records.map(
-            (record: SearchRecord ,i: number) => <SearchResult  
-              name={record.name}  
-              link={record.link}
-              price={record.price}
-              imageSrc={record.imageUrl}
+            ({name,link,price,imageSrc}: SearchRecord ,i: number) => <SearchResult  
+              name={name}  
+              link={link}
+              price={price}
+              imageSrc={imageSrc}
               key={i}
             />
         )
