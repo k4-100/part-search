@@ -6,8 +6,14 @@ import placeholderImg from '../assets/images/placeholders/graphics-card-placehol
 
 
 
+type Props = {
+  name: string;
+  link: string;
+  price: number;
+  imageSrc: string;
+}
 
-const SearchResult = () =>{
+const SearchResult=( {name, link, price, imageSrc}: Props )=>{
   return(
     <Box
       // elevation={2}
@@ -38,14 +44,16 @@ const SearchResult = () =>{
             fontSize: "2vw"
           }}>
             <Link>
-              nvidia geforce rtx 3050 gigabyte 6GB
+              { name }
+              {/* nvidia geforce rtx 3050 gigabyte 6GB */}
             </Link>
           </Typography>
           <Typography variant="h4" sx={{
             fontSize: "clamp(15px, 3vw, 40px)",
             pl: 5
           }}>
-            $100.99
+            ${ price }
+            {/* $100.99 */}
           </Typography>
           <IconButton
             color="success"
@@ -84,7 +92,7 @@ const SearchResult = () =>{
               fontSize: "7vw"
             }}/>
           </Button>
-          <img src={placeholderImg} alt="product image" style={{
+          <img src={imageSrc} alt="product image" style={{
             display: "block",
             maxWidth: "100%"
           }} />
