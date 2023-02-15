@@ -1,8 +1,9 @@
 import {configureStore, createSlice } from '@reduxjs/toolkit'
+import { SearchRecord } from '../types'
 
 const searchResultsSlice = createSlice({
   name: "searchResults",
-  initialState: { records: [] },
+  initialState: { records: Array<SearchRecord> },
   reducers: {
     addToDrawer(){},
     removeToDrawer(){}

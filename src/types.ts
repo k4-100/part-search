@@ -1,7 +1,6 @@
 
 type SearchRecordOptions = {
   isDrawerRecord: boolean;
-
 }
 
 export class SearchRecord{
