@@ -16,7 +16,7 @@ const SearchResults = () =>{
   return(
     <Box>
       { 
-        searchResults.records.map(
+        searchResults.records && searchResults.records.map(
             (record: SearchRecord ,i: number) => <SearchResult  
               name={record.name}  
               link={record.link}
