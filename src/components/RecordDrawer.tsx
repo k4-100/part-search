@@ -5,16 +5,22 @@ import Button from '@mui/material/Button';
 import { Paper, Typography } from '@mui/material';
 import {grey} from '@mui/material/colors';
 import { MoreVert, Close} from '@mui/icons-material';
+import { useDispatch, useSelector } from 'react-redux';
 import SearchResult from './SearchResult';
+import { SearchRecord } from '../types';
+
 
 
 
 const drawerWidth = 550
 
 const RecordDrawer = () => {
+  const { records } : { records: Array<SearchRecord> } = useSelector( (state: any) => state )
+  
+  const dispatch = useDispatch()
+
   const [drawerToggled, setDrawerToggled] = useState(false)
-
-
+  console.log('redsa',records)
   const toggleDrawer = () => setDrawerToggled( !drawerToggled )
 
   return (
@@ -54,6 +60,7 @@ const RecordDrawer = () => {
         </Button>
         <Drawer
         open={drawerToggled}
+        open
         onClose={toggleDrawer}
         id="21321"
       >
@@ -77,9 +84,9 @@ const RecordDrawer = () => {
             </Typography>
           </Paper>
           <Box>
-            { 
-              Array(2).fill(null).map(
-                  (_, i) => <SearchResult key={i} />
+            {
+              records[0] && records.filter( record => record.options.isDrawerRecord ).map( 
+                (record,i) => <SearchResult  {...record} key={i}/> 
               )
             }
           </Box>

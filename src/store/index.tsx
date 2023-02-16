@@ -5,13 +5,16 @@ import placeholderImg from '../assets/images/placeholders/graphics-card-placehol
 const searchResultsSlice = createSlice({
   name: "searchResults",
   initialState: { 
-    records:  
-      Array(2).fill( new SearchRecord('dsadas', 'ds', 5.0, placeholderImg) )
+    records:  [ 
+      new SearchRecord('dsadas', 'ds', 5.0, placeholderImg),
+      new SearchRecord('dsadas', 'ds', 5.0, placeholderImg),
+       new SearchRecord('dsadas', 'ds', 5.0, placeholderImg, { isDrawerRecord: true }),
+    ]
     
   },
   reducers: {
     addToDrawer(){},
-    removeToDrawer(){}
+    removeToDrawer(){},
   }
 })
 
