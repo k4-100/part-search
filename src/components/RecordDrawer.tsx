@@ -60,7 +60,6 @@ const RecordDrawer = () => {
         </Button>
         <Drawer
         open={drawerToggled}
-        open
         onClose={toggleDrawer}
         id="21321"
       >

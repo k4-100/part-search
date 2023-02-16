@@ -12,17 +12,12 @@ const SearchResults = () =>{
   
   console.log( searchResults )
 
-
   return(
     <Box>
       { 
         searchResults.records && searchResults.records.map(
-            ({name,link,price,imageSrc}: SearchRecord ,i: number) => <SearchResult  
-              name={name}  
-              link={link}
-              price={price}
-              imageSrc={imageSrc}
-              key={i}
+            (record: SearchRecord ,i: number) => <SearchResult 
+              {...record} key={i} 
             />
         )
       }
