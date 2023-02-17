@@ -1,5 +1,5 @@
 
-type SearchRecordOptions = {
+export type SearchRecordOptions = {
   isDrawerRecord: boolean;
 }
 

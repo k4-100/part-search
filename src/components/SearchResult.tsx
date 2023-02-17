@@ -1,6 +1,7 @@
 import { Box, Link, Typography, Button, IconButton} from '@mui/material'
-import { InfoOutlined, Add } from '@mui/icons-material'
+import { InfoOutlined, Add, Cancel } from '@mui/icons-material'
 import { grey , blue} from "@mui/material/colors";
+import { SearchRecordOptions } from '../types'
 
 import placeholderImg from '../assets/images/placeholders/graphics-card-placeholder.webp'
 
@@ -11,14 +12,13 @@ type Props = {
   link: string;
   price: number;
   imageSrc: string;
+  options: SearchRecordOptions;
 }
 
-const SearchResult=( {name, link, price, imageSrc}: Props )=>{
+const SearchResult=( {name, link, price, imageSrc, options}: Props )=>{
   return(
     <Box
-      // elevation={2}
       sx={{
-      // background: "blue",
       position: "relative",
       width:"clamp(270px, 55vw, 900px)",
       mx: "auto",
@@ -56,15 +56,16 @@ const SearchResult=( {name, link, price, imageSrc}: Props )=>{
             {/* $100.99 */}
           </Typography>
           <IconButton
-            color="success"
+            color={ options.isDrawerRecord ? "error" : "success"}
             sx={{
               position: "absolute",
               bottom: 0,
               left: 0,
             }}
           >
-
-            <Add />
+          {
+            options.isDrawerRecord ? <Cancel /> : <Add />
+          }
           </IconButton>
         </Box>
         <Box sx={{
