@@ -1,5 +1,5 @@
 import { Box, Link, Typography, Button, IconButton} from '@mui/material'
-import { InfoOutlined, Add, Cancel } from '@mui/icons-material'
+import { InfoOutlined, Add, Close } from '@mui/icons-material'
 import { grey , blue} from "@mui/material/colors"
 import { useSelector, useDispatch } from 'react-redux'
 import { actions } from '../store'
@@ -78,7 +78,7 @@ const SearchResult=( {id,name, link, price, imageSrc, options}: Props )=>{
             }}
           >
           {
-            options.isDrawerRecord ? <Cancel /> : <Add />
+            options.isDrawerRecord ? <Close /> : <Add />
           }
           </IconButton>
         </Box>

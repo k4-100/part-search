@@ -15,7 +15,6 @@ const searchResultsSlice = createSlice({
   },
   reducers: {
     toggleIsDrawerRecord(state, action){
-      console.log( "state: ", state, " action: ", action )
       const { records } = state
       const index = records
         .findIndex( record => record.id === action.payload )
