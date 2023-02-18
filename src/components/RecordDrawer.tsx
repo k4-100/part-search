@@ -20,7 +20,6 @@ const RecordDrawer = () => {
   const dispatch = useDispatch()
 
   const [drawerToggled, setDrawerToggled] = useState(false)
-  console.log('redsa',records)
   const toggleDrawer = () => setDrawerToggled( !drawerToggled )
 
   return (

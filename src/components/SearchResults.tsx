@@ -10,7 +10,6 @@ const SearchResults = () =>{
   const searchResults = useSelector((state: any) => state)
   const dispatch = useDispatch()
   
-  console.log( searchResults )
 
   return(
     <Box>

@@ -1,6 +1,8 @@
 import { Box, Link, Typography, Button, IconButton} from '@mui/material'
 import { InfoOutlined, Add, Cancel } from '@mui/icons-material'
-import { grey , blue} from "@mui/material/colors";
+import { grey , blue} from "@mui/material/colors"
+import { useSelector, useDispatch } from 'react-redux'
+import { actions } from '../store'
 import { SearchRecordOptions } from '../types'
 
 import placeholderImg from '../assets/images/placeholders/graphics-card-placeholder.webp'
@@ -8,6 +10,7 @@ import placeholderImg from '../assets/images/placeholders/graphics-card-placehol
 
 
 type Props = {
+  id: number;
   name: string;
   link: string;
   price: number;
@@ -15,7 +18,17 @@ type Props = {
   options: SearchRecordOptions;
 }
 
-const SearchResult=( {name, link, price, imageSrc, options}: Props )=>{
+const SearchResult=( {id,name, link, price, imageSrc, options}: Props )=>{
+
+  const searchResults = useSelector((state: any) => state)
+  const dispatch = useDispatch()
+
+  
+  const handleIconButtonClick = () =>{
+    dispatch(actions.toggleIsDrawerRecord(id))
+  }
+
+
   return(
     <Box
       sx={{
@@ -56,6 +69,7 @@ const SearchResult=( {name, link, price, imageSrc, options}: Props )=>{
             {/* $100.99 */}
           </Typography>
           <IconButton
+            onClick={handleIconButtonClick}
             color={ options.isDrawerRecord ? "error" : "success"}
             sx={{
               position: "absolute",
@@ -73,7 +87,8 @@ const SearchResult=( {name, link, price, imageSrc, options}: Props )=>{
           marginLeft: "auto",
           maxWidth: "45%",
         }}>
-          <Button sx={{
+          <Button  
+            sx={{
             position: "absolute",
             width: "100%",
             height:"100%",

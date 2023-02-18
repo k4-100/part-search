@@ -36,7 +36,7 @@ const darkTheme = createTheme({
 
 // family: agave Nerd Font Mono
 
-
+ 
 
 
 
@@ -44,7 +44,6 @@ const App = () => {
   const searchResults = useSelector((state: any) => state)
   const dispatch = useDispatch()
 
-  console.log(searchResults)
 
   const [isSearchBarFocused, setIsSearchBarFocused] = useState<boolean>(false)
 
